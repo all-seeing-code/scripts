@@ -1,6 +1,8 @@
 import os
 from os import listdir
 from os.path import isfile
+import readline, glob
+import re
 
 def listdir_nohidden(path):
     for f in os.listdir(path):
@@ -9,8 +11,16 @@ def listdir_nohidden(path):
 
 #takes input of the folder on which you to want to make changes
 
-print"Input the folder address you want to work on Eg. /Users/Downloads"
-mypath = raw_input()
+def complete(text, state):
+    return (glob.glob(text+'*')+[None])[state]
+
+readline.set_completer_delims(' \t\n;')
+readline.parse_and_bind("tab: complete")
+readline.set_completer(complete)
+
+#print"Input the folder address you want to work on Eg. /Users/Downloads"
+
+mypath = raw_input('Input the folder address you want to work on Eg. /Users/Downloads : ')
 print "Current Directory is: ", os.getcwd()
 os.chdir(mypath)
 print "Working on: ", os.getcwd()
