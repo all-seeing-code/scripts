@@ -4,21 +4,19 @@ from os.path import isfile
 import readline, glob
 import re
 
+#function to take care of hidden files
 def listdir_nohidden(path):
     for f in os.listdir(path):
         if not f.startswith('.'):
             yield f
 
-#takes input of the folder on which you to want to make changes
-
+#Autocomplete functionality
 def complete(text, state):
     return (glob.glob(text+'*')+[None])[state]
 
 readline.set_completer_delims(' \t\n;')
 readline.parse_and_bind("tab: complete")
 readline.set_completer(complete)
-
-#print"Input the folder address you want to work on Eg. /Users/Downloads"
 
 mypath = raw_input('Input the folder address you want to work on Eg. /Users/Downloads : ')
 print "Current Directory is: ", os.getcwd()
