@@ -1,3 +1,27 @@
+"""
+A python script which takes all the files in a given folder and sorts them in 
+directories based on filetype (file extension). The directory names are the 
+file extensions. 
+
+eg. If the script is run on a folder (say Downloads) with following structure:
+Downloads
+  a.pdf
+  a.txt
+  b.txt
+  abc.docx 
+
+It returns with the following directory structure
+
+Downloads
+  Pdf
+    a.pdf
+  Txt
+    a.txt
+    b.txt
+  Docx
+    abc.docx
+
+"""
 import os
 from os import listdir
 from os.path import isfile
